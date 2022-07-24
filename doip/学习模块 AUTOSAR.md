@@ -34,6 +34,10 @@ AUTOSAR 3.0版本是第一个用于ECU量产的版本。
 
 当然，AUTOSAR标准有其局限性。例如，AUTOSAR无法描述应用软件组件的功能行为。
 
+![image](https://user-images.githubusercontent.com/80186561/180648004-c58d2941-17e1-4cff-b310-ae29ef50e014.png)
+![image](https://user-images.githubusercontent.com/80186561/180648012-a594c29c-e9ca-4ffa-9a7b-a3feea870496.png)
+
+
 ## AUTOSAR概念
 
 SWC（Software Components，应用软件组件）与BSW（Basic Software，基础软件）之间的明确接口是AUTOSAR架构的组成之一。BSW模块提供基本的标准服务，例如总线通信、存储管理、IO访问、系统和诊断服务。
@@ -56,6 +60,12 @@ RTE将应用软件层从基础软件中抽象出来，控制应用软件层的�
 
 分层模型简化了从软件到各种硬件的移植（porting）。以前，如果软件架构设计不佳，移植需要在各个方面（直至应用软件层）进行大范围修改。基于AUTOSAR，只需替换MCAL中所有微控制器相关的驱动程序即可，重新配置ECU抽象层中的模块，其他所有层均不受移植影响。这大大减少了开发和测试工作以及相关的风险。
 
+![image](https://user-images.githubusercontent.com/80186561/180648420-1b86751e-d6f5-4073-aacb-f73f3963aff1.png)
+![image](https://user-images.githubusercontent.com/80186561/180648429-7f89b2e0-9f1f-43ea-852a-9ed6d65ea258.png)
+![image](https://user-images.githubusercontent.com/80186561/180648436-55f4faa3-f5cc-4f07-af7c-945d55d189a7.png)
+![image](https://user-images.githubusercontent.com/80186561/180648472-d0961586-6baa-4428-a928-30d1b3cbd4e9.png)
+
+
 ## AUTOSAR中的接口定义
 
 AUTOSAR定义三种类型的接口：
@@ -70,6 +80,11 @@ AUTOSAR接口是通用接口，源自任意SWC的端口。AUTOSAR接口由RTE提
 
 标准接口是AUTOSAR标准用C语言预定义的API接口，用于连接BSW模块、RTE与操作系统，或RTE与Com模块。
 
+![image](https://user-images.githubusercontent.com/80186561/180648510-88bab198-d12d-4563-b5be-b6190795da61.png)
+![image](https://user-images.githubusercontent.com/80186561/180648515-e87c783a-04cf-4ed7-8b9a-8d4b65da1dcd.png)
+![image](https://user-images.githubusercontent.com/80186561/180648519-ba2f207a-9e3d-4fd1-a9d3-5ec0fc437979.png)
+
+
 # 2. AUTOSAR方法论
 
 ## 开发阶段
@@ -83,6 +98,13 @@ AUTOSAR组织在AUTOSAR方法论中定义了ECU软件的开发方法，将开发
 代码生成器根据ECU配置描述文件生成或修改ECU软件的基础应用软件组件，同时还会生成特定的RTE代码。
 
 应用程序的开发与此过程无关。SWC的描述文件（AUTOSAR XML文件）描述SWC的接口。基于这些描述文件，可以单独实现和测试SWC，从而简化整车厂和一级供应商（Tier1）的应用软件集成工作。
+
+![image](https://user-images.githubusercontent.com/80186561/180648835-7cbbb140-2224-4ed6-9fc0-824d347eb321.png)
+![image](https://user-images.githubusercontent.com/80186561/180648851-acb57ca3-5dfe-4118-94a8-304b83f245cf.png)
+![image](https://user-images.githubusercontent.com/80186561/180648856-d69da572-2ae1-4d43-91c8-3eef012ace08.png)
+![image](https://user-images.githubusercontent.com/80186561/180648862-2f795472-cb66-4143-b0a7-b22ef55b31ef.png)
+![image](https://user-images.githubusercontent.com/80186561/180648872-0bf095da-c42e-4362-9067-5f4444ab18ac.png)
+![image](https://user-images.githubusercontent.com/80186561/180648883-55bea42f-fbab-4a61-8ac3-27da2cce3fc9.png)
 
 ## AUTOSAR交换格式
 
@@ -118,6 +140,9 @@ AUTOSAR 3:
 
 灵活的AUTOSAR方法论可适合不同项目和不同整车厂的实际要求。例如，在系统描述文件中可自由选择是否使用SWC。
 
+![image](https://user-images.githubusercontent.com/80186561/180648988-831e428c-d330-4f8c-a4e1-3f5b69b4bd5b.png)
+
+
 ## 功能软件的开发
 
 车辆的功能软件最初被描述为一个整体系统，随后细分为多个子功能，即SWC。这些SWC通过接口（端口）将信息（数据元素）传输给其他SWC。
@@ -137,6 +162,11 @@ AUTOSAR提供端口作为通信接口，并定义了两种通信方式：
 
 单独创建的SWC描述文件中记录了SWC及其接口和可运行实体。但AUTOSAR无法描述功能行为。
 
+![image](https://user-images.githubusercontent.com/80186561/180649100-a596ba30-af06-487d-a5d0-395d714093b9.png)
+![image](https://user-images.githubusercontent.com/80186561/180649108-40fd366b-d579-4e66-83bd-2e3749ece254.png)
+![image](https://user-images.githubusercontent.com/80186561/180649117-3551cfbf-9033-4f96-bfce-48000715e8b0.png)
+
+
 # 3. 实践中的功能软件
 
 ## AUTOSAR工作产品：从整车厂到一级供应商
@@ -153,6 +183,13 @@ AUTOSAR在内容方面提供很大的自由度，具体内容取决于整车厂�
 
 在向AUTOSAR过渡期间，可能并非所有参与者都仅使用AUTOSAR方法。因此，供应商可能会从整车厂接收到.dbc、.ldf或FIBEX数据库，并基于此数据库来生成ECUC。
 
+![image](https://user-images.githubusercontent.com/80186561/180649230-b8743f26-3216-4da5-9afd-69e9c1baec8a.png)
+![image](https://user-images.githubusercontent.com/80186561/180649274-eaaec1cf-7e22-48a1-9a7b-2e78ac1d7c5e.png)
+![image](https://user-images.githubusercontent.com/80186561/180649340-f126f5bc-5e7c-430f-b62d-2890de670fc2.png)
+![image](https://user-images.githubusercontent.com/80186561/180649342-4b0ba84b-ee8c-4843-ada8-a91bb62e960f.png)
+![image](https://user-images.githubusercontent.com/80186561/180649347-459b2f78-8847-4a90-8698-dae74f6d1a2e.png)
+
+
 ## 功能软件
 
 在AUTOSAR中，ECU的功能软件通过应用软件组件实现，其核心原理是创建SWC的形式描述（SWC描述文件），然后从中获得SWC的C语言接口。SWC描述文件存储在AUTOSAR定义的XML文件中。
@@ -168,6 +205,11 @@ SWC的AUTOSAR概念的特点在于SWC的实现具有独立于微控制器的接�
 
 为在实际开发过程中实现复用和接口兼容， SWC功能的正确至关重要。由于明确定义了SWC的接口，因此可以对SWC执行测试，例如单元测试。这样可以开发一个独立于其他SWC的SWC，然后将其作为经过全面测试的单元存放在库中，甚至可以将SWC作为COTS组件提供。
 
+![image](https://user-images.githubusercontent.com/80186561/180649374-61e0d117-0c21-4656-9af3-26db2504b351.png)
+![image](https://user-images.githubusercontent.com/80186561/180649384-4aef3b2f-228e-4756-9678-3cc4b58c2c07.png)
+![image](https://user-images.githubusercontent.com/80186561/180649394-2cc5c0b1-1653-4a0f-8217-ce5c3bce8fcc.png)
+
+
 # 4. 基础软件和RTE
 
 ## 基础软件的任务
@@ -180,6 +222,49 @@ AUTOSAR基础软件还提供内部ECU服务，例如状态管理（ECU状态和�
 
 如下的软件架构图是Vector对AUTOSAR标准的实现，即MICROSAR。
 
+![image](https://user-images.githubusercontent.com/80186561/180649463-d569e634-215d-4a34-83bb-62e6b2def8dd.png)
+![image](https://user-images.githubusercontent.com/80186561/180649472-846ba552-8e29-449c-a58d-5d2a9dd04316.png)
+![image](https://user-images.githubusercontent.com/80186561/180649486-b98ad70c-3375-466d-aea0-906db79aaa2c.png)
+![image](https://user-images.githubusercontent.com/80186561/180649494-831e0efb-56ea-4864-b1cb-156f2281b35e.png)
+![image](https://user-images.githubusercontent.com/80186561/180649501-7795ecf4-e1e3-434b-9d61-de69c674503d.png)
+![image](https://user-images.githubusercontent.com/80186561/180649511-6b14570b-2055-4fd5-bd1b-eb68b0ac67fb.png)
+![image](https://user-images.githubusercontent.com/80186561/180649554-8721e1f8-872e-4d0f-92d1-8acd4c54fca2.png)
+![image](https://user-images.githubusercontent.com/80186561/180649559-2be51650-1fa2-4e0a-849c-bc16a4143cb0.png)
+![image](https://user-images.githubusercontent.com/80186561/180649572-e5fa7a32-31ea-43b0-9200-15bcb435c2af.png)
+![image](https://user-images.githubusercontent.com/80186561/180649578-f507298f-a870-4248-b665-125d7518d810.png)
+![image](https://user-images.githubusercontent.com/80186561/180649585-ef865524-b53c-4145-82d2-28fa642cf80f.png)
+![image](https://user-images.githubusercontent.com/80186561/180649594-26a2760e-513f-4f93-bda9-1f3d87dd0f19.png)
+![image](https://user-images.githubusercontent.com/80186561/180649601-6066bd80-e943-47c0-aaba-d6a9085a10c2.png)
+![image](https://user-images.githubusercontent.com/80186561/180649604-40b9ae7b-dc03-4967-8abe-0b137cab531a.png)
+![image](https://user-images.githubusercontent.com/80186561/180649627-2f8cec04-0dc2-4a95-8eea-d0e0492dc67a.png)
+![image](https://user-images.githubusercontent.com/80186561/180649639-9f37a80f-a353-4d8a-ac4c-b0cc21e1ea2f.png)
+![image](https://user-images.githubusercontent.com/80186561/180649643-a09d4019-1fdd-4f5f-8a03-e0a523ee8aa2.png)
+![image](https://user-images.githubusercontent.com/80186561/180649647-c0310fcb-1fb6-47c0-baf9-84116dca8fd9.png)
+***
+![image](https://user-images.githubusercontent.com/80186561/180649746-abc50253-fedd-4a38-b5a9-c64ca937d531.png)
+![image](https://user-images.githubusercontent.com/80186561/180649753-07ea0c68-c4a3-4fa7-9f8f-e1227101d3f1.png)
+![image](https://user-images.githubusercontent.com/80186561/180649758-064a3eb7-c722-4493-9052-b7137f2d2812.png)
+![image](https://user-images.githubusercontent.com/80186561/180649780-4d0c7d46-44ff-46ca-a43f-42284d538db3.png)
+![image](https://user-images.githubusercontent.com/80186561/180649791-f473c66e-440b-4eb8-ae3b-1b565c01fc47.png)
+![image](https://user-images.githubusercontent.com/80186561/180649794-a7752c6e-c69d-4952-8d7c-26983749fcf5.png)
+![image](https://user-images.githubusercontent.com/80186561/180649799-aa2b1200-26ec-44c7-9395-57d4dff97e9e.png)
+![image](https://user-images.githubusercontent.com/80186561/180649806-e03aba7e-1ea8-43eb-9d50-2da210084a37.png)
+![image](https://user-images.githubusercontent.com/80186561/180649811-f8e47a69-9d92-4df5-ae2d-eec5d96cc701.png)
+![image](https://user-images.githubusercontent.com/80186561/180649815-850ff122-3a9f-4fed-965c-974f486ef9b2.png)
+![image](https://user-images.githubusercontent.com/80186561/180649820-4d9daadd-1d50-410f-aca1-424d3b398c7f.png)
+![image](https://user-images.githubusercontent.com/80186561/180649827-5bdf5354-545c-4e1a-bb63-2323c7754c0f.png)
+![image](https://user-images.githubusercontent.com/80186561/180649831-0782d18d-fab3-4f1c-8845-fd99e2efdaea.png)
+![image](https://user-images.githubusercontent.com/80186561/180649838-85258d5b-1884-4049-9508-1d0effc5f358.png)
+![image](https://user-images.githubusercontent.com/80186561/180649845-50bf80b6-2ce0-4a75-bb2f-1d25969e21a8.png)
+![image](https://user-images.githubusercontent.com/80186561/180649859-1682e037-1c22-4d94-b26f-10c2974bf6cf.png)
+![image](https://user-images.githubusercontent.com/80186561/180649870-1f06cd22-2cd4-4564-91c5-bc15ccd47063.png)
+![image](https://user-images.githubusercontent.com/80186561/180649876-e46dee21-9efa-4cf3-a41a-0788a0c759d1.png)
+![image](https://user-images.githubusercontent.com/80186561/180649879-fa66e20c-4c9e-45f3-996d-f7f72ac18da1.png)
+![image](https://user-images.githubusercontent.com/80186561/180649884-7a2486cf-d765-4c51-9c80-56b0e352115f.png)
+***
+![image](https://user-images.githubusercontent.com/80186561/180649895-c5db174e-016e-4449-95e0-45482cb52db7.png)
+
+
 ## 基础软件的属性
 
 只有在BSW提供所需机制时，才能以应用软件组件的形式进行抽象。
@@ -187,6 +272,8 @@ AUTOSAR基础软件还提供内部ECU服务，例如状态管理（ECU状态和�
 因此，BSW会通过这些机制对RTE进行补充。在与RTE及其操作紧密交织的通信协议栈和操作系统方面，这一点表现得尤其明显。
 
 例如，BSW必须生成事件并为RTE提供计时器。BSW还通过通信总线将数据传输到其它ECU。在执行应用软件组件的可运行实体时，程序流控制和系统状态管理都是BSW的任务。同时，BSW还提供同步机制，序列化并行进程的访问。
+
+
 
 ## RTE及其最佳配置
 
@@ -232,7 +319,18 @@ AUTOSAR基础软件不一定具有整车厂自定义特性，但在某些方面�
 - 诊断布局和参数设置（ODX、CANdela文件等）
 - 对供应商的其他要求，例如通信协议栈发布后的配置能力（Post-build）、以库的形式交付
 
-右侧的软件架构图是Vector对AUTOSAR标准的实现，即MICROSAR。
+如下的软件架构图是Vector对AUTOSAR标准的实现，即MICROSAR。
+
+![image](https://user-images.githubusercontent.com/80186561/180650186-cdb86880-f378-4ab9-bb63-3e155b4b30bd.png)
+![image](https://user-images.githubusercontent.com/80186561/180650222-cf6f2c4a-af77-42f2-b51c-06da1ab7a83e.png)
+![image](https://user-images.githubusercontent.com/80186561/180650232-7a59d9d2-fe0e-480f-af4b-cd1704d409a8.png)
+![image](https://user-images.githubusercontent.com/80186561/180650233-b8560c0b-f578-49a3-8db8-1ec101ffa561.png)
+![image](https://user-images.githubusercontent.com/80186561/180650252-d50b77ef-27f1-435e-8232-f60b8195e94f.png)
+![image](https://user-images.githubusercontent.com/80186561/180650263-aef63926-2b8a-408c-81ff-6ad81491a49d.png)
+![image](https://user-images.githubusercontent.com/80186561/180650268-881ec605-50a6-4780-8580-190eb1bb5974.png)
+![image](https://user-images.githubusercontent.com/80186561/180650297-63afa427-0151-4f88-96a8-5bf8dcf05448.png)
+
+
 
 ## 基础软件从何而来
 
@@ -243,6 +341,9 @@ AUTOSAR基础软件不一定具有整车厂自定义特性，但在某些方面�
 整车厂也可能仅指定基础软件模块的功能，ECU的技术实现和集成则完全由供应商负责。供应商可以向各个软件提供商采购模块。然后，供应商可以自行集成所购买的模块，也可以让软件供应商完成此项工作。
 
 一些大型供应商已经开发了自己的AUTOSAR基础软件，因此也可以充当内部的软件提供商。根据与整车厂的合作关系，可能需要就此软件的使用进行具体协商。
+
+![image](https://user-images.githubusercontent.com/80186561/180650322-f166140f-1ecc-4499-90b2-e17706663c84.png)
+
 
 # 5. 工具、移植和测试
 
@@ -263,6 +364,10 @@ AUTOSAR基础软件不一定具有整车厂自定义特性，但在某些方面�
 
 每个BSW模块可能会使用不同的工具。但从实践角度来看，建议使用统一的工具配置BSW。
 
+![image](https://user-images.githubusercontent.com/80186561/180650373-9d3eb369-7e27-4f5f-adce-d2cc64e9932c.png)
+![image](https://user-images.githubusercontent.com/80186561/180650413-1fed8ce7-e07f-4de2-ab6f-852de5f7f2ee.png)
+
+
 ## 移植解决方案
 
 AUTOSAR标准支持将非AUTOSAR方法开发的ECU软件移植到AUTOSAR体系中。为此，AUTOSAR定义了特定的复杂驱动（Complex Driver）。
@@ -274,6 +379,10 @@ AUTOSAR标准支持将非AUTOSAR方法开发的ECU软件移植到AUTOSAR体系�
 使用这种方法，虽然可以从部分AUTOSAR功能中获益，例如，通过RTE定期调用应用程序的内容，或经RTE进行通信和诊断，但应用程序核心的实现仍不符合AUTOSAR标准。
 
 从长远来看，应用程序中未按AUTOSAR标准建模的部分将被消除，特别是所有任务主体和对操作系统的调用，以及所有具有中断阻塞的点和其他基础软件的访问。可使用符合AUTOSAR的标准的元素将其替代。如果使用完善的设计方法，可以比以前更有效地实现这些应用程序。
+
+![image](https://user-images.githubusercontent.com/80186561/180650466-d4655649-0561-4a5d-8108-e549c70c5070.png)
+![image](https://user-images.githubusercontent.com/80186561/180650547-1a38c3b6-6220-4732-94a0-90be53747fb5.png)
+
 
 ## 测试AUTOSAR ECU
 
@@ -287,3 +396,6 @@ AUTOSAR标准支持将非AUTOSAR方法开发的ECU软件移植到AUTOSAR体系�
 AUTOSAR的标准化内部软件架构确保每个AUTOSAR ECU中都存在某些状态变量，并可在测试环境中使用这些变量从而为测试和调试ECU提供附加价值。例如，EcuM模块中提供的ECU状态，以及ComM模块中存储的各个网络通道的通信状态。通过适当配置BSW模块，可以通过XCP与ECU的连接（例如通过某一网络或者JTAG或Nexus等调试接口）来访问这些状态变量。BSW生成器可以提供这些状态变量的匹配描述文件（A2L）。作为替代方案，还可以使用AUTOSAR为此专门定义的监控和调试协议。
 
 AUTOSAR在访问应用程序级别方面也提供了好处。例如，可以生成RTE，从而能够访问SWC之间交换的数据。同样，RTE生成器也可以生成合适的A2L文件。
+
+![image](https://user-images.githubusercontent.com/80186561/180650577-e5f552c1-6637-461d-b8f0-a5fa57a648a8.png)
+![image](https://user-images.githubusercontent.com/80186561/180650588-cbb401f5-a8e1-4119-a421-705084254c25.png)
