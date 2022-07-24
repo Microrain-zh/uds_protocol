@@ -34,20 +34,23 @@
 
 ### 标准
 
-OABR（Open Alliance BroadR-Reach）是一种物理传输技术，起初由Broadcom（博通公司）开发，后由OPEN Alliance SIG [标准化](https://elearning.vector.com/mod/page/view.php?id=4856)为IEEE 100BASE-T1。
+OABR（Open Alliance BroadR-Reach）是一种物理传输技术，起初由Broadcom（博通公司）开发，后由OPEN Alliance SIG 标准化为IEEE 100BASE-T1。
 
+![image](https://user-images.githubusercontent.com/80186561/180637300-09cb893b-3bee-4091-b24e-dc01ca6f2043.png)
 
 
 ### 物理连接
 
 传输对称差分电压的双绞电缆用于物理连接。发送方将需要发送的位流编码成用电压表示的符号。接收方将收到的符号流进行解码从而获取其中包含的位。
 
+![image](https://user-images.githubusercontent.com/80186561/180637314-93c2b97e-38a5-44ee-b064-38cb35e452c0.png)
 
 
 ### 编码（Encoding）和解码（Decoding）
 
 4B3B、3B2T和PAM3方法用于编码和解码以及产生差分电压。这些方法由IEEE 100BASE-T1 PHY实现，集成在ECU的一个特定模块中。PHY在物理介质和以太网控制器之间建立连接。
 
+![image](https://user-images.githubusercontent.com/80186561/180637328-a2dc6497-43bd-48bc-b9a2-c28bbd885ce0.png)
 
 
 ### 拓扑结构（Topology）
@@ -70,6 +73,7 @@ OABR（Open Alliance BroadR-Reach）是一种物理传输技术，起初由Broad
 
 对于物理连接，IEEE 100BASE-TX通常需要两个通道（channel），每个通道有两条双绞线。尽管某些以太网可以使用单通道进行通信，但实际上这种情况很少发生，因为这些网络仅支持单工或半双工。
 
+![image](https://user-images.githubusercontent.com/80186561/180637478-24c426ff-a664-4271-ac3b-c148ca9267c0.png)
 
 
 ### 编码和解码
@@ -78,6 +82,7 @@ OABR（Open Alliance BroadR-Reach）是一种物理传输技术，起初由Broad
 
 与IEEE 100BASE-T1不同，IEEE 100BASE-TX通过使用NRZI、4B5B和MLT-3方法进行编码和解码以及生成差分电压。这些方法由IEEE 100BASE-TX PHY实现，集成在ECU的一个特定模块中。PHY在物理介质和以太网控制器之间建立连接。
 
+![image](https://user-images.githubusercontent.com/80186561/180637509-8bd040f6-03bf-439c-92ed-b4fc778c8016.png)
 
 
 ### 电缆和连接器
@@ -100,6 +105,8 @@ OABR（Open Alliance BroadR-Reach）是一种物理传输技术，起初由Broad
 
 对于物理连接，IEEE 1000BASE-T需要四个通道，每个通道有两条双绞线。双绞线传输对称差分电压，用于表示编码符号。
 
+![image](https://user-images.githubusercontent.com/80186561/180637530-eee25b96-6464-493d-8510-7a1c373c30c2.png)
+![image](https://user-images.githubusercontent.com/80186561/180637550-75dca9a1-be69-42f5-921c-bc9063581a30.png)
 
 
 ### 编码和解码
@@ -130,23 +137,24 @@ OABR（Open Alliance BroadR-Reach）是一种物理传输技术，起初由Broad
 
 ### 基本功能
 
-以太网通信的第二层提供用于控制数据传输的重要基本功能，包括统一的报文结构，节点[寻址](https://elearning.vector.com/mod/page/view.php?id=4861)和总线访问方式（bus access method）。所有基本功能在以太网控制器中实现，目前该控制器通常是微控制器的一个组成部分。
+以太网通信的第二层提供用于控制数据传输的重要基本功能，包括统一的报文结构，节点寻址和总线访问方式（bus access method）。所有基本功能在以太网控制器中实现，目前该控制器通常是微控制器的一个组成部分。
 
 ### 数据传输
 
-符号和符率是针对物理层而言的，第二层传输的是按位组成的[以太网帧](https://elearning.vector.com/mod/page/view.php?id=4862)。位流通常通过介质无关接口（MII）在以太网PHY和以太网控制器之间传输。MII是IEEE[标准化](https://elearning.vector.com/mod/page/view.php?id=4856)接口，具有多种变型以满足不同的传输速度。
+符号和符率是针对物理层而言的，第二层传输的是按位组成的以太网帧。位流通常通过介质无关接口（MII）在以太网PHY和以太网控制器之间传输。MII是IEEE标准化接口，具有多种变型以满足不同的传输速度。
 
 ### 总线访问方式
 
 在发送报文之前，以太网控制器首先侦听物理介质（载波监听），判断网络中的另一个节点是否正在发送报文，从而防止报文被覆盖。如果介质处于空闲状态，则以太网控制器开始进行数据传输。
 
+![image](https://user-images.githubusercontent.com/80186561/180637571-2b564557-2326-42e0-970e-9c5a4e5ebac9.png)
 
 
 由于多个节点可能会通过以太网同时访问总线（多路访问），因此如果两个节点同时开始发送，则在传统总线网络上可能会发生冲突。对于这种情况，以太网控制器具有用于取消传输的冲突检测（collision detection）功能。为防止产生第二次冲突，节点须等待随机时间之后才开始重新发送（避退过程）。每个发送方必须自己计算随机时间。
 
 ### 冲突检测
 
-完整的总线访问方式被称为载波监听多路访问/冲突检测（CSMA/CD），相关算法在以太网控制器中实现。对于车载以太网的物理层，冲突检测位于次要地位。IEEE 100BASE-T1、[IEEE 100BASE-TX](https://elearning.vector.com/mod/page/view.php?id=4858)和[IEEE 1000BASE-T](https://elearning.vector.com/mod/page/view.php?id=4859)都允许全双工数据传输。因此，这些物理介质上不会发生冲突。
+完整的总线访问方式被称为载波监听多路访问/冲突检测（CSMA/CD），相关算法在以太网控制器中实现。对于车载以太网的物理层，冲突检测位于次要地位。IEEE 100BASE-T1、IEEE 100BASE-TX和IEEE 1000BASE-T都允许全双工数据传输。因此，这些物理介质上不会发生冲突。
 
 
 
@@ -156,6 +164,8 @@ OABR（Open Alliance BroadR-Reach）是一种物理传输技术，起初由Broad
 
 节点寻址用于在以太网中定向传递报文。为此，每个节点至少具有一个MAC地址，作为局域网（LAN）中的唯一标识。传输的报文始终包含源地址和目标地址，以便可以推断通信节点。
 
+![image](https://user-images.githubusercontent.com/80186561/180637637-06404c7a-87f3-43fa-aba6-c157081d1b64.png)
+![image](https://user-images.githubusercontent.com/80186561/180637638-42de3885-1914-47b5-aa06-b106b111c1fc.png)
 
 
 ### 单播（Unicast）
@@ -170,6 +180,7 @@ OABR（Open Alliance BroadR-Reach）是一种物理传输技术，起初由Broad
 
 作为经典寻址方式的扩展，VLAN地址经常用于汽车行业。这些地址虚拟网络存在于整个网络中，并允许划定通信范围。这样就可以为不同的应用划分不同的域，域内成员可相互通信。由于ECU可以使用或提供多个应用，因此可能是多个域的成员，进而可能是多个VLAN网络的成员。
 
+![image](https://user-images.githubusercontent.com/80186561/180637643-8b5f0e0e-160e-4bfb-b34c-7cb057941640.png)
 
 
 ### 优先级
@@ -188,12 +199,14 @@ IEEE规范定义了不同格式的以太网帧。汽车行业通常使用Etherne
 
 Ethernet II帧通常以接收方/目的地址开头，指定哪些网络节点将接收这帧报文。与发送方/源地址只能使用单播地址不同，接收方/目的地址还可以使用组播或广播地址。对于以太网帧来说，只能有一个发送方，但可以有多个接收方。
 
+![image](https://user-images.githubusercontent.com/80186561/180637653-9676366a-560d-41f2-99ec-897be08ba24d.png)
 
 
 ### 以太网类型
 
 基本MAC帧和标识MAC帧通过类型字段（以太网类型）进行区分。类型字段通常会标识有效负载数据区域中所包含的数据包（packet），并提供关于更高层（如IPv4）中使用的协议的信息。如果以太网类型的值为0x8100，那么类型字段将向后移动四个字节，并在其原始位置插入一个VLAN标签。
 
+![image](https://user-images.githubusercontent.com/80186561/180637670-e94c02e8-d925-4f02-a844-67a8234d67f4.png)
 
 
 ### VLAN标签
@@ -212,6 +225,7 @@ CRC校验和在Ethernet II帧的末尾。标准算法用于计算校验和，且
 
 为了传输Ethernet II帧，以太网控制器在开始时会插入一个前导码和一个起始帧界定符（SFD），旧的以太网标准以此做为传输开始的标识。所以以太网数据包包括：前导码、起始帧定界符和以太网II帧。
 
+![image](https://user-images.githubusercontent.com/80186561/180637686-51bd8606-21dd-45b7-a2c6-047de5c414b3.png)
 
 
 # 4. IP协议- IPv4/IPv6
@@ -224,7 +238,7 @@ Internet协议（IP）支持超出局域网范围的通信。为此，对负责�
 
 ### IP数据包
 
-IP数据包可实现[标准化](https://elearning.vector.com/mod/page/view.php?id=4856)通信，其报头包含目标地址和源地址信息。目标地址可以是非本地网络的节点地址。理论上，IP数据包可以实现对全球范围内的任何节点进行[寻址](https://elearning.vector.com/mod/page/view.php?id=4861)。
+IP数据包可实现标准化通信，其报头包含目标地址和源地址信息。目标地址可以是非本地网络的节点地址。理论上，IP数据包可以实现对全球范围内的任何节点进行寻址。
 
 
 
@@ -234,6 +248,7 @@ IP数据包可实现[标准化](https://elearning.vector.com/mod/page/view.php?i
 
 为了避免IP数据包在错误情况下依然长时间在互联网上流转，当路由器在网络之间转发IP数据包时，会对IP报头中的一个参数（IPv4报文中的TTL（Time To Live，存活时间）、IPv6报文中的HL（Hop Limit，跳数限制））进行倒计时。该参数值等于零时，下一个路由器会丢弃该数据包。
 
+![image](https://user-images.githubusercontent.com/80186561/180637790-3ed754bb-1d0b-4c58-ae40-636269f165e9.png)
 
 
 ## IPv4 - 版本 4
@@ -242,18 +257,22 @@ IP数据包可实现[标准化](https://elearning.vector.com/mod/page/view.php?i
 
 32位IPv4地址通过点分十进制逐字节表示（如192.168.10.1）。多年以前，IPv4地址分类用于管理Internet公共地址结构。尽管这些分类如今已经没有太大的意义，但通过它们可以对网络地址和主机地址进行基本划分，从而推断网络中的节点数。
 
+![image](https://user-images.githubusercontent.com/80186561/180637831-5ba8015b-b11b-4fa8-9021-a6d9fd2c0f33.png)
+![image](https://user-images.githubusercontent.com/80186561/180637837-0fa3f32f-999b-4bbe-9ba4-86268ee1fe31.png)
 
 
 ### 本地地址
 
 IPv4地址早已分配殆尽。但本地或私有地址仍可供自由使用，例如在公司或私人网络中。这些地址无法通过公共网络访问，路由器也不会在未更改的情况下将本地地址转发到Internet。
 
+![image](https://user-images.githubusercontent.com/80186561/180637844-aedf7fca-2672-4e6f-a31f-bdad4f31ab1e.png)
 
 
 ### 子网掩码（Subnet masks）
 
 IP数据报头所使用的目标和源节点地址由高位（左侧）的网络地址和低位（右侧）的主机地址组成。通常使用子网掩码定义划分IP地址的位置，可以将其表示为独立地址（255.255.255.0）或IP地址加后缀（192.168.10.1/24）。左侧已设置位表示网络地址（如左24个位），而右侧未设置位表示主机地址（如右8个位）。
 
+![image](https://user-images.githubusercontent.com/80186561/180637848-c37efef5-b640-4bd5-98e6-1aa32c03f24b.png)
 
 
 ### 组播和广播
@@ -268,6 +287,7 @@ IP数据报头所使用的目标和源节点地址由高位（左侧）的网络
 
 IPv6主要是为了解决IPv4地址不足和优化路由过程而开发的。与IPv4相比，IPv6报头中的字段数量从12个减少到8个。
 
+![image](https://user-images.githubusercontent.com/80186561/180637877-3e229ff5-27ad-441b-aa62-2a142e5714c5.png)
 
 
 ### IPv6地址表示法
@@ -309,27 +329,22 @@ IPv6地址中，只包含0的一个序列块或连续多个全0的序列块可�
 
 DHCP协议能够自动将IP地址分配给一个或多个节点。新的IP节点可以自动集成到现有网络中，无需手动配置。
 
+![image](https://user-images.githubusercontent.com/80186561/180638355-09f3fbcb-f6de-4fd5-8f17-d1a4461ba7a1.png)
 
-
-  
-
-  
 
 ### ICMP（Internet Control Message Protocol，Internet控制报文协议）
 
 ICMP协议用于控制任务，是每个IP实现的一部分。一个典型的应用示例是ICMP回应请求（PING）。此命令用于检查两台计算机之间的IP通信。请求节点向目标节点发送PING报文，如果稍后收到了ICMP回应应答（PONG），则表示目标节点可用。
 
+![image](https://user-images.githubusercontent.com/80186561/180637903-793ed77d-82cd-487c-b026-33e9aadedbb0.png)
 
-
-  
 
 ### ARP（Address Resolution Protocol，地址解析协议）
 
 ARP协议用于确定IP和MAC地址之间的相关性。如果IP节点想要与已知IP地址但不知道MAC地址的某个目标进行通信，则可以请求获取其MAC地址。发送节点为此向网络广播发送一个包含目标IP的 ARP请求。收到ARP响应后，可将MAC地址保存在ARP缓存中，供后续发送时使用。
 
+![image](https://user-images.githubusercontent.com/80186561/180637918-94edcbb0-ff18-477f-97c4-8e56078aaab7.png)
 
-
- 
 
 ### NDP（Neighbor Discovery Protocol，邻居发现协议）
 
@@ -340,9 +355,9 @@ ARP协议用于确定IP和MAC地址之间的相关性。如果IP节点想要与�
 - 在不使用DHCP协议的情况下自动配置网络节点的IPv6地址（本地链路地址生成）
 - 参数发现：设置各种参数，如跳数限制
 
+![image](https://user-images.githubusercontent.com/80186561/180637928-c95dfb4b-890a-4ed3-bab8-c3f1d7187a0c.png)
+![image](https://user-images.githubusercontent.com/80186561/180637932-b08ac75b-cdcb-4006-820b-e8cd66e6a2b2.png)
 
-
- 
 
 ### IGMP（Internet Group Management Protocol，Internet组管理协议）
 
@@ -360,13 +375,15 @@ IPv4系统使用IGMP将组播组成员信息传递给组播路由器。
 
 OSI（Open System Interconnection，开放式系统互联）7 层模型的第4层有两种传输协议：TCP（Transmission Control Protocol，传输控制协议）和UDP（User Datagram Protocol，用户数据报协议）。TCP协议是面向连接的传输，而UDP协议则是无连接的传输。这两种协议都会将需要传输的数据划分为更小的部分：在TCP协议中称为段（segment），在UDP协议中称为数据报（datagram）。
 
+![image](https://user-images.githubusercontent.com/80186561/180637972-acf072af-f6f9-4286-a1ae-1fc13ae0f2d3.png)
+![image](https://user-images.githubusercontent.com/80186561/180637980-c401d35f-8565-4425-8acb-34e17f9694c7.png)
 
 
 因为传输协议支持面向连接或无连接的传输，因此适用于不同的用途。根据对安全性和传输速度的要求，可以单独使用TCP或UDP，或者两种协议的组合。
 
-### [寻址](https://elearning.vector.com/mod/page/view.php?id=4861)
+### 寻址
 
-为了到达目标节点，数据通过第三层的IP协议进行传输。[寻址](https://elearning.vector.com/mod/page/view.php?id=4861)端口用于连接上层的具体应用或功能。如果端口已打开，则可以通过相关的功能或应用程序交换数据。
+为了到达目标节点，数据通过第三层的IP协议进行传输。寻址端口用于连接上层的具体应用或功能。如果端口已打开，则可以通过相关的功能或应用程序交换数据。
 
 
 
@@ -376,6 +393,7 @@ OSI（Open System Interconnection，开放式系统互联）7 层模型的第4�
 
 UDP协议是一种无连接传输协议，支持简单的数据报传输。与TCP协议不同，UDP协议没有用于保障数据传输的机制。发送方不会收到关于数据报丢失或受到干扰的通知，也没有允许重新发送或再次请求数据报的机制。但是，如有需要，可以在更高层的协议中轻松实现这些功能。
 
+![image](https://user-images.githubusercontent.com/80186561/180638020-4bc318e1-249c-446f-a9ec-e0c1fe638ef7.png)
 
 
 ### 优点
@@ -384,6 +402,7 @@ UDP协议的优点是传输变化较小。与TCP协议不同，发送方不必�
 
 另一个优点是能够将数据报作为组播或广播发送。这意味着可以将UDP数据报发送到网络中的多个节点或所有节点。因此，在信息必须同时发送到多个接收方的情况下，UDP协议传输可降低总线负载率。
 
+![image](https://user-images.githubusercontent.com/80186561/180638046-70e9dd4e-f802-4c8d-9cd7-bc0e1d13ab5d.png)
 
 
 ### UDP数据包
@@ -402,12 +421,15 @@ UDP数据报封装在IP数据包中，并通过IP发送。在此情况下，IP�
 
 与UDP协议不同，TCP协议是面向连接的传输。这意味着在实际的数据传输之前必须在两个节点之间建立连接。IP地址和端口号用于分别标识两个节点。
 
+![image](https://user-images.githubusercontent.com/80186561/180638056-78187220-0a03-47e0-be10-ac7b906f44d8.png)
 
 
 ### 建立连接
 
 TCP协议使用三次握手（三个步骤）建立连接。意图建立连接的节点首先传输包含SYN（Synchronize Sequence Number，同步顺序编号）标识的段。SYN标识表示发送方想要与接收方建立连接。
 
+![image](https://user-images.githubusercontent.com/80186561/180638061-3f884eef-979f-480d-92e9-e477e63954a8.png)
+![image](https://user-images.githubusercontent.com/80186561/180638065-9dd12796-19d0-4a6a-ac2a-78503dc3ec55.png)
 
 
 除了SYN标志，第一个段还包括单独的序列号、窗口字段和其他可选参数。序列号由一个随机数、ISN（Initial Sequence Number，初始序列号）和一个连续编号组成。连续编号表示当前发送的字节在整个数据流中的位置。接收方根据连续编号确定所有段的顺序，并重组数据流。
@@ -434,6 +456,7 @@ ACK编号用于向发送方确认已接收每个段，前提是未检测到任�
 
 所有数据交换完毕并得到肯定确认之后，连接关闭。为此，节点会发送包含FIN标识的段，表示连接终止。该FIN段的接收方必须进行确认响应，使连接处于半关闭状态。如果接收方也想终止连接，则向原始发送方发送一个包含FIN标志的段。如果得到确认，则完成终止连接，不再传输数据。
 
+![image](https://user-images.githubusercontent.com/80186561/180638078-f66d42d4-796b-4800-9a77-7571da372a06.png)
 
 
 # 6. 应用-相关协议
@@ -444,6 +467,8 @@ ACK编号用于向发送方确认已接收每个段，前提是未检测到任�
 
 一种新的数据传输理念正通过SOME/IP（Scalable service-Oriented MiddlewarE over IP）进入汽车领域。经典的总线系统（CAN、LIN、FlexRay）使用面向信号的数据传输，而SOME/IP协议允许引入面向服务的信息传输。但需要注意的是， SOME/IP协议不仅仅限于描述通信。确切地说，SOME/IP是一种对ECU 软件组件产生影响的中间件。因此，AUTOSAR中有一个单独的软件路径，可连接到应用程序。
 
+![image](https://user-images.githubusercontent.com/80186561/180638099-47eee4a8-48d5-40ec-99f7-c12a8036e9b0.png)
+![image](https://user-images.githubusercontent.com/80186561/180638109-60cafd46-443d-46c5-a52d-9235b7f92263.png)
 
 
 ### 按需传输
@@ -458,14 +483,17 @@ ACK编号用于向发送方确认已接收每个段，前提是未检测到任�
 
 ### 事件和字段通知
 
-服务器基于有效订阅发送的内容具有两种形式：事件通知和字段通知，两者都是基于事件驱动的。事件通知对应一个表单，包含表示快照的[属性](https://elearning.vector.com/mod/page/view.php?id=4867)，而这些属性与之前的事件没有任何关系，而字段通知包含与之前内容相关的值，因而支持访问历史值。因此，可以扩展字段从而包括getter和setter方法，使客户端能够读写所需内容。这样，即使没有订阅，客户端也可以只读或读写服务器的内容。
+服务器基于有效订阅发送的内容具有两种形式：事件通知和字段通知，两者都是基于事件驱动的。事件通知对应一个表单，包含表示快照的属性，而这些属性与之前的事件没有任何关系，而字段通知包含与之前内容相关的值，因而支持访问历史值。因此，可以扩展字段从而包括getter和setter方法，使客户端能够读写所需内容。这样，即使没有订阅，客户端也可以只读或读写服务器的内容。
 
+![image](https://user-images.githubusercontent.com/80186561/180638126-7c46d35b-6f40-4d61-b07d-fe3069a10919.png)
+![image](https://user-images.githubusercontent.com/80186561/180638133-0dd1022e-1e99-4474-ab1f-2892f0a17171.png)
 
 
 ### 方法
 
 另外一种数据交换的方式就是调用方法。客户端通过执行远程过程调用（RPC），来触发相关服务器上函数的启动。客户端通过向网络发送请求可以调用该函数，客户端的请求中还可以包含函数相关的参数数据。服务器执行函数后，会给客户端回复一个返回值。通常客户端调用方法表示该客户端希望使用生成的数据。但是客户端也可能调用服务器上没有任何返回值的方法。在这种情况下，当方法实际被调用时，客户端部分的操作已完成。
 
+![image](https://user-images.githubusercontent.com/80186561/180638144-4a3f2a7f-20a8-4109-93dc-1a47c1a421a1.png)
 
 
 ### 服务发现
@@ -480,6 +508,8 @@ ACK编号用于向发送方确认已接收每个段，前提是未检测到任�
 
 2012年，IEEE将“音视频桥工作组”重命名为“时间敏感网络工作组”。现有的协议标准继续扩展，并增加更多的功能。AVB/TSN支持低延迟和高质量的流数据（如摄像头数据）传输。由于数据不会跨网络边界传输，因此至少在汽车中，可以不使用IP、TCP和UDP协议，AVB/TSN协议直接基于以太网。
 
+![image](https://user-images.githubusercontent.com/80186561/180638159-f99ccfea-5653-4578-a944-230f2e5c5759.png)
+![image](https://user-images.githubusercontent.com/80186561/180638163-0cb5af4b-a85f-4767-b030-e55d5475480d.png)
 
 
 AVB/TSN协议所基于的标准可以通过IP使用，但由于上文所述，以及动态响应问题，因此在汽车内部，AVB/TSN追求更快的运行（即跳过IP，直接基于以太网）。因此，使用流预留协议的动态带宽预留协议一般不用于汽车。
@@ -490,8 +520,10 @@ AVB/TSN协议所基于的标准可以通过IP使用，但由于上文所述，�
 
 ### 流数据
 
-音视频传输协议（AVTP）在其有效负载区域传输数据，通常是视频，音频或控制数据。如果传输的是流媒体数据（音频/视频），那么AVTP 报头中始终会包含一个指向未来某一时刻的时间信息。此外，AVTP使用带VLAN标签的[以太网帧](https://elearning.vector.com/mod/page/view.php?id=4862)，以便交换机可以对数据进行优先级排序。 AVB/TSN提出的另一个质量要求是低延迟抖动，Talker 和Listener 之间的延迟小于2ms。
+音视频传输协议（AVTP）在其有效负载区域传输数据，通常是视频，音频或控制数据。如果传输的是流媒体数据（音频/视频），那么AVTP 报头中始终会包含一个指向未来某一时刻的时间信息。此外，AVTP使用带VLAN标签的以太网帧，以便交换机可以对数据进行优先级排序。 AVB/TSN提出的另一个质量要求是低延迟抖动，Talker 和Listener 之间的延迟小于2ms。
 
+![image](https://user-images.githubusercontent.com/80186561/180638188-7da1efed-f955-426a-9e4f-c23d415ef6ef.png)
+![image](https://user-images.githubusercontent.com/80186561/180638193-619dd1e5-842e-4510-bf43-33684a873cbe.png)
 
 
 当携带未来时间点的帧到达Listener之后， AVTP将帧交付给应用层（如Speaker）。为了使这个时间点（Presentation time，呈现时间）在所有接收节点中同时发生，需要对节点进行高度精确的同步。精确时间协议（PTP）负责此项工作，当前大多使用PTP 协议的简化版本，即gPTP协议。
@@ -508,6 +540,7 @@ AVB/TSN协议所基于的标准可以通过IP使用，但由于上文所述，�
 
 ISO 13400明确定义基于IP的诊断。只要支持IP数据包的传输，使用何种物理层并没有什么区别。 例如，除以太网之外，DoIP也可以基于WLAN和UMTS来实现。
 
+![image](https://user-images.githubusercontent.com/80186561/180638207-bb067240-8283-4622-8149-fff74f2ff09e.png)
 
 
 ### 传输协议
@@ -526,6 +559,7 @@ DoIP协议需要UDP和TCP的支持。UDP用于状态或配置信息的传输， 
 
 为了避免在每个ECU底层实现DoIP，DoIP协议允许使用诊断网关。原则上，车辆内传统总线系统连接的所有ECU都是可用的。网关充当中间人的角色，将测试仪的请求转发到内部网络，以便ECU进行接收和处理。当收到ECU的响应时，网关会将该响应路由回测试仪。
 
+![image](https://user-images.githubusercontent.com/80186561/180638221-ff88f883-cf7d-48a0-b207-df611c01e790.png)
 
 
 ### 逻辑地址
@@ -534,4 +568,6 @@ DoIP协议需要UDP和TCP的支持。UDP用于状态或配置信息的传输， 
 
 ### 诊断过程
 
-在诊断过程中，诊断网关首先接收来自测试仪的请求。该请求包含诊断数据包，其中携带所需的诊断服务和待诊断ECU的逻辑地址信息。随后网关从该诊断数据包中提取有关内容，并将其打包为可在总线或网络上发送的报文。例如，如果要通过CAN总线对ECU进行[寻址](https://elearning.vector.com/mod/page/view.php?id=4861)，网关需要将带有相应的诊断请求标志符（如0x600）的报文发送到总线，然后等待来自ECU的响应。在收到来自总线或网络的响应（如带标志符0x700的CAN报文）之后，网关会将原始诊断服务的响应返回给测试仪。网关会在返回给测试仪的响应中添加ECU 的逻辑地址，以便测试仪能够区分并分配响应。这样，测试仪可以向位于不同的总线系统和网络的多个ECU发送请求，而无需按照发送请求的顺序等待响应。
+在诊断过程中，诊断网关首先接收来自测试仪的请求。该请求包含诊断数据包，其中携带所需的诊断服务和待诊断ECU的逻辑地址信息。随后网关从该诊断数据包中提取有关内容，并将其打包为可在总线或网络上发送的报文。例如，如果要通过CAN总线对ECU进行寻址，网关需要将带有相应的诊断请求标志符（如0x600）的报文发送到总线，然后等待来自ECU的响应。在收到来自总线或网络的响应（如带标志符0x700的CAN报文）之后，网关会将原始诊断服务的响应返回给测试仪。网关会在返回给测试仪的响应中添加ECU 的逻辑地址，以便测试仪能够区分并分配响应。这样，测试仪可以向位于不同的总线系统和网络的多个ECU发送请求，而无需按照发送请求的顺序等待响应。
+
+![image](https://user-images.githubusercontent.com/80186561/180638237-0cee6560-addb-47cf-81de-2014da71d7f7.png)
