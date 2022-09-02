@@ -38,7 +38,8 @@ DaVinci Configurator 里面有个Module这个概念。
 
 不同颜色Module图标代表的意思：
 
-![image-20220902172839264](C:\Users\wangfeitao\AppData\Roaming\Typora\typora-user-images\image-20220902172839264.png)
+![image-20220902172839264](https://user-images.githubusercontent.com/80186561/188117935-896c305b-9f88-40dc-bebc-0c64fbfb5fc3.png)
+
 
 对了，还有个问题，Module是怎么添加进来的？
 
