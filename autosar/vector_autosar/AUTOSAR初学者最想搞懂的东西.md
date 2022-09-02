@@ -28,7 +28,7 @@ SIP或者叫SIP包，即**S**oftware **I**ntegration **P**ackage，是Tier1在�
 
 那么Tire1开发者，就基于这个SIP包来做项目上的应用开发。
 
-![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/6AXJMmPWkxibD6ZJg0RTNjiakazrfoic46909OXnpqh789BEZHia4eQ3qMXmYgRNSNoBS57G46PLMlfTN6NicTib5HmA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
+![1](https://user-images.githubusercontent.com/80186561/188119770-c21c818b-0205-4a81-a41d-a2bee5fb5b98.png)
 
 除了SIP这个名称，你可能还会遇到SLP、HLP等概念，即
 
@@ -49,7 +49,9 @@ SIP里有什么？直接打开SIP包看不就知道了，这个问题是不是�
 
 直接截个图来看看，你知道这里面这些是啥么？
 
-![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/6AXJMmPWkxibD6ZJg0RTNjiakazrfoic469NDbyrhascoT2icDntmKk88Aa7Tia1x2iciaxoR2dha2NAtrySqyEJpeecw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
+
+![2](https://user-images.githubusercontent.com/80186561/188119834-388d9103-e714-4da8-b95c-feb81bb34647.png)
+
 
 实际上，对初学者来说，不知道也影响不大，如果你好奇，那就参考下我的理解：
 
@@ -71,17 +73,23 @@ SIP里有什么？直接打开SIP包看不就知道了，这个问题是不是�
 
 Developer是干什么的呢？简而言之，就是配置SWC（Software Component）即Application Layer上的东西用的？
 
-![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/6AXJMmPWkxibUZofzhuLE633lPKWtWontKEY1c9ZrrymgrHXlibdff2vewlLuViazicukSl86ylqIrBFsR7wOJuibqw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
+
+![3](https://user-images.githubusercontent.com/80186561/188119910-ee67f8b6-b308-4d2b-b25d-381a4667913d.png)
+
 
 是不是有点懵逼，Application要配置啥子？
 
 再给你个图看看：
 
-![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/6AXJMmPWkx82q2zSQDbicwm1ibKswIov8OySlR23EmxnV6Hxp1aIzfz5Wdl4FPGXw5Y0mmXuFp2librwhDbOnLoWA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
+
+![4](https://user-images.githubusercontent.com/80186561/188119956-2ce9f8c7-c675-4330-b53a-289e4c3491c3.png)
+
 
 上图的这些Applications之间的接口是需要配置的，因为接口有一套特殊的约定。
 
-![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/6AXJMmPWkx82q2zSQDbicwm1ibKswIov8OicfDuZCCpUxFyVZc2jBOUI0cib1x0mRYuthbd4mvmExe4J7iaRQMowegQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
+
+![5](https://user-images.githubusercontent.com/80186561/188120030-6a558641-0d40-4483-aeb7-c7e2e0bb84a8.png)
+
 
 目前，先了解下这些概念，后续慢慢深入比较好，我之前也有类似的文章讲解这些东西的概念和具体实操演练，里面涉及到SWC、Port和Runnable等概念。放个传送门：
 
@@ -104,9 +112,9 @@ Developer是干什么的呢？简而言之，就是配置SWC（Software Componen
 
 可以如果你不想看文字，我这里有个视频可以了解下。
 
-![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/6AXJMmPWkxicUKmnnicJjiboM9W1RpLqtq57WJz13KgNuobeUVkNYJSNic2Dl4SvppYIArjI0G5Wevlu3iccEuMiciakA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
+![6](https://user-images.githubusercontent.com/80186561/188120403-3323fb4b-a1a0-447e-a1ea-2e71ec1b6dd7.png)
 
-![图片](https://mmbiz.qpic.cn/sz_mmbiz_jpg/6AXJMmPWkxicUKmnnicJjiboM9W1RpLqtq565kOGncCt2ps5qw7PyQJRdR0wAEspMe8XTvDk9waGh35kFtGibphykQ/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1)
+![7](https://user-images.githubusercontent.com/80186561/188120480-0db1f3f8-e334-4d17-8b89-bd27d9655358.jpg)
 
 如果不想看视频，那就看下面文字简单介绍下。
 
